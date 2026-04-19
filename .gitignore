@@ -1,0 +1,40 @@
+# Workspace-local toolchain (bootstrapped via README instructions)
+.tools/
+
+# Disposable local HTML preview (regenerable via scripts/build_site.py)
+commentaries/*/*/artifacts/site/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS / misc
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+
+# Cursor
+.cursor/

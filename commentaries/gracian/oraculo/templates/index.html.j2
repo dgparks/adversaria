@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oráculo manual y arte de prudencia — Commentaries</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Oráculo manual y arte de prudencia</h1>
+    <p class="subtitle">Commentaries on the 300 maxims of Baltasar Gracián, English and Spanish side by side.</p>
+    <p class="counts">
+      {% for status, count in status_counts %}<span class="count count-{{ status }}">{{ count }} {{ status }}</span>{% if not loop.last %} · {% endif %}{% endfor %}
+    </p>
+  </header>
+
+  <ol class="maxim-list">
+    {% for m in maxims %}
+    <li class="maxim-row status-{{ m.status }}">
+      <a href="{{ '%03d' % m.number }}.html">
+        <span class="num">{{ '%03d' % m.number }}</span>
+        <span class="title">{{ m.title_en or '(untitled)' }}</span>
+        {% if m.status and m.status != 'published' %}<span class="status">{{ m.status }}</span>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+
+  <footer class="page-footer">
+    <p>Generated locally by <code>scripts/build_site.py</code> — preview only, not for publishing.</p>
+  </footer>
+</body>
+</html>

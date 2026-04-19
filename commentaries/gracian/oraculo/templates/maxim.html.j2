@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ number }}. {{ title_en }} — Oráculo manual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="breadcrumb">
+    <a href="index.html">← Index</a>
+    <span class="spacer"></span>
+    {% if prev_number %}<a class="prev" href="{{ '%03d' % prev_number }}.html">‹ {{ prev_number }}</a>{% else %}<span class="prev disabled">‹</span>{% endif %}
+    {% if next_number %}<a class="next" href="{{ '%03d' % next_number }}.html">{{ next_number }} ›</a>{% else %}<span class="next disabled">›</span>{% endif %}
+  </nav>
+
+  <article class="maxim">
+    <header>
+      <p class="maxim-number">Maxim {{ number }}</p>
+      <h1>{{ title_en }}</h1>
+      {% if title_es %}<p class="title-es">{{ title_es }}</p>{% endif %}
+      {% if status and status != 'published' %}<p class="status status-{{ status }}">{{ status }}</p>{% endif %}
+    </header>
+
+    <section class="parallel">
+      <div class="lang lang-en">
+        <h2>English{% if sources and sources.english %} <span class="source">{{ sources.english }}</span>{% endif %}</h2>
+        {{ english_html | safe }}
+      </div>
+      <div class="lang lang-es">
+        <h2>Spanish{% if sources and sources.spanish %} <span class="source">{{ sources.spanish }}</span>{% endif %}</h2>
+        {{ spanish_html | safe }}
+      </div>
+    </section>
+
+    <section class="commentary">
+      <h2>Commentary</h2>
+      {{ commentary_html | safe }}
+    </section>
+  </article>
+
+  <footer class="page-footer">
+    <p>Generated locally by <code>scripts/build_site.py</code> — preview only, not for publishing.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,279 @@
+:root {
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --max-width: 72rem;
+  --gutter: 2rem;
+  --color-fg: #1f1d1a;
+  --color-muted: #6c655c;
+  --color-faint: #b8b1a6;
+  --color-rule: #e6e0d4;
+  --color-bg: #faf6ec;
+  --color-card: #ffffff;
+  --color-accent: #8c3a23;
+  --color-link: #1f4f7a;
+  --shadow: 0 1px 2px rgba(40, 30, 10, 0.04);
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--serif);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+article,
+.site-header,
+.maxim-list,
+.page-footer,
+.breadcrumb {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+a { color: var(--color-link); text-decoration: none; }
+a:hover { color: var(--color-accent); text-decoration: underline; }
+
+/* -- Breadcrumb / per-maxim nav --------------------------------------- */
+
+.breadcrumb {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.breadcrumb .spacer { flex: 1; }
+.breadcrumb a { color: var(--color-muted); }
+.breadcrumb a:hover { color: var(--color-accent); text-decoration: none; }
+.breadcrumb .disabled { color: var(--color-faint); }
+
+/* -- Maxim page ------------------------------------------------------- */
+
+article.maxim {
+  background: var(--color-card);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2.5rem var(--gutter);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+article header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.maxim-number {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  margin: 0 0 0.6rem;
+}
+
+article h1 {
+  font-size: 1.9rem;
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.title-es {
+  margin: 0;
+  color: var(--color-muted);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--color-faint);
+  color: var(--color-muted);
+  border-radius: 999px;
+}
+.status-draft  { color: #8a6d3b; border-color: #d8c79a; background: #fbf3df; }
+.status-review { color: #2f5d8c; border-color: #b8d0e6; background: #e8f0f8; }
+.status-ready  { color: #2c6e3b; border-color: #b3d9bc; background: #e7f3ea; }
+
+/* -- Side-by-side translations --------------------------------------- */
+
+.parallel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 760px) {
+  .parallel { grid-template-columns: 1fr; gap: 1.25rem; }
+  article.maxim { padding: 1.75rem 1.25rem; }
+  body { font-size: 1rem; }
+}
+
+.lang h2,
+.commentary h2 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-muted);
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.lang h2 .source {
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-faint);
+  margin-left: 0.5rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.lang p:first-of-type,
+.commentary p:first-of-type { margin-top: 0; }
+
+.lang p,
+.commentary p { margin: 0 0 1rem; }
+
+.lang em, .commentary em { font-style: italic; }
+.lang strong, .commentary strong { font-weight: 600; }
+
+blockquote {
+  border-left: 3px solid var(--color-faint);
+  padding: 0.1rem 1rem;
+  color: var(--color-muted);
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+/* Strip the trailing margin from the last paragraph inside a blockquote so
+   the left border doesn't draw past the visible text. */
+blockquote > :last-child { margin-bottom: 0; }
+blockquote > :first-child { margin-top: 0; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-rule);
+  margin: 1.5rem 0;
+}
+
+/* -- Commentary section ---------------------------------------------- */
+
+.commentary {
+  border-top: 1px solid var(--color-rule);
+  padding-top: 2rem;
+}
+
+/* -- Index page ------------------------------------------------------- */
+
+.site-header {
+  padding-top: 3rem;
+  padding-bottom: 1.5rem;
+}
+
+.site-header h1 {
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.site-header .subtitle {
+  margin: 0 0 0.75rem;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.site-header .counts {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.maxim-list {
+  list-style: none;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  margin: 1rem auto 3rem;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.maxim-row {
+  border-bottom: 1px solid var(--color-rule);
+}
+.maxim-row:last-child { border-bottom: none; }
+
+.maxim-row a {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  color: var(--color-fg);
+}
+.maxim-row a:hover { color: var(--color-accent); text-decoration: none; }
+
+.maxim-row .num {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.maxim-row .title { line-height: 1.35; }
+
+.maxim-row .status {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-faint);
+  border: none;
+  background: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.maxim-row.status-draft .title { color: var(--color-muted); }
+
+/* -- Footer ----------------------------------------------------------- */
+
+.page-footer {
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--color-faint);
+  text-align: center;
+}
+.page-footer code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+}
